@@ -24,7 +24,7 @@ def create_token(data : str):
     encode_jwt = jwt.encode(data, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encode_jwt
 
-# decode token 
+# decode token or verify access token jwt
 def decode_token(token:str):
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
@@ -32,6 +32,3 @@ def decode_token(token:str):
     except JWTError:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-
-# verify access token jwt
-def 
